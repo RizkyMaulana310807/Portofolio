@@ -1,0 +1,234 @@
+body {
+    background-color: white;
+    margin: 0;
+}
+nav{
+    position: sticky;
+    top: 0;
+    border-bottom:1px solid black;
+}
+.about{
+    background-color: #60b483;
+}
+.logo h1{
+    font-family: 'Montserrat', sans-serif;
+}
+.nav-sticky {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+}
+
+.nav-sticky img {
+    width: 50px;
+    height: 50px;
+    margin-left: 35px;
+}
+
+.nav-sticky ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.nav-sticky ul li {
+    list-style: none;
+    list-style-type: none;
+    text-decoration: none;
+    margin-right: 35px;
+}
+
+.logo {
+    display: flex;
+    justify-content: space-between;
+    width: 170px;
+    align-items: center;
+    margin: 0;
+    height: 50px;
+}
+
+.nav-sticky ul li a {
+    color: black;
+    text-decoration: none;
+    padding: 10px 25px;
+    border-radius: 10px;
+    border: 2px solid black;
+    position: relative;
+    font-family: 'Garamond', serif;
+}
+.container{
+    /* background-color: red; */
+    display: inline-flex;
+    text-align: center;
+}
+.heading{
+    /* background-color: blue; */
+    /* display: inline-flex; */
+    text-align: start;
+}
+.img-comm{
+    /* background-color: purple; */
+    display: inline-flex;
+}
+.img-comm img{
+    width: 400px;
+}
+.heading h1{
+    /* background-color: red; */
+    font-family: 'Montserrat', sans-serif;
+}
+.heading p{
+    /* background-color: yellow; */
+    font-family: 'Garamond', serif;
+}
+.heading button{
+    background-color: #60b483;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 25px;
+    font-family: 'Garamond', serif;
+}
+.heading button:hover{
+    cursor: pointer;
+}
+.heading1{
+    /* background-color: red; */
+    background-color: #EEF296;
+    padding: 10px;
+    text-align: center;
+}
+.heading1 h1{
+    /* background-color: blue; */
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+}
+.heading1 p{
+    /* background-color: purple; */
+    border-radius: 10px;
+    font-family: 'Garamond', serif;
+}
+.containerProject{
+    /* background-color: green; */
+    padding: 10px;
+}
+.headingProject{
+    /* background-color: red; */
+    text-align: center;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+}
+.projectList div{
+    /* background-color: blue; */
+    border: 1px solid black;
+    box-shadow: 2px 2px 2px black;
+    margin: 2px;
+    width: 400px;
+    height: 200px;
+    border-radius: 20px;
+    background-color: #9ADE7B;
+    margin-bottom: 10px;
+}
+.projectList{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    text-align: center;
+}
+.buttonMoreProject{
+    /* background-color: blue; */
+    text-align: center;
+    padding: 20px;
+}
+.buttonMoreProject button{
+    color: black;
+    font-size: 25px;
+    background-color: #60b483;
+    padding: 5px;
+    width: 9rem;
+    border-radius: 10px;
+    text-decoration: none;
+    border: 2px solid black;
+    font-family: 'Garamond', serif;
+
+}
+.aboutFooter{
+    background-color: #9ADE7B;
+    border: 1px solid black;
+    height: 235px;
+    width: 95%;
+    border-radius: 10px;
+}
+.wrapper{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+.wrapperCard .buttonNav button{
+    /* background-color: purple; */
+    padding: 10px;
+    width: 100px;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+}
+.wrapperCard{
+    /* background-color: blue; */
+    padding: 25px;
+}
+.buttonNav{
+    /* background-color: yellow; */
+    margin: 0;
+    background-color: black;
+    border: 1px solid black;
+    display: inline-block;
+    border-radius: 10px;
+    position: relative;
+}
+.card1, .card2, .card3, .card4, .card5, .card6{
+    margin-top: 0;
+    /* background-color: red; */
+    background-color: #9ADE7B;
+    border: 1px solid black;
+    box-shadow: 2px 2px 2px black;
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    text-align: center;
+}
+.cardWrap{
+    display: flex;
+    justify-content: space-between;
+
+}
+/* .buttonNav button:focus{
+    transition: 0.25s ease-in-out;
+    background-color: red;
+} */
+.btn-1{
+    background-color: #60b483;
+    transition: 250ms ease-in-out;
+    font-weight: 700;
+}
+.btn-2{
+    transition: 250ms ease-in-out;
+    font-weight: 700;
+    background-color: #2a6141;
+}
+.layer1, .layer2, .layer3{
+    /* background-color: green; */
+    width: 32%;
+    border-radius: 10px;
+    display: flex;
+}
+.card4, .card5, .card6{
+    display: none;
+    transition: 250ms ease-in-out;
+
+}
+.card1, .card2, .card3{
+    display: block;
+    transition: 250ms ease-in-out;
+}
