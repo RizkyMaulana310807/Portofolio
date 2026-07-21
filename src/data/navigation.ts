@@ -3,25 +3,28 @@ export interface NavigationItem {
   href: string;
 }
 
+// Mengambil base URL secara otomatis (misal: "/" di lokal, atau "/Portofolio/" di GitHub Pages)
+const base = import.meta.env.BASE_URL;
+
 export const navigation: NavigationItem[] = [
   {
     title: "Home",
-    href: "/",
+    href: base, // Hasil: "/" atau "/Portofolio/"
   },
   {
     title: "About",
-    href: "/#about", // FIX: Mengarah ke ID 'about' di halaman beranda
+    href: `${base}#about`, // Hasil: "/#about" atau "/Portofolio/#about"
   },
   {
     title: "Projects",
-    href: "/#projects", // Tetap halaman terpisah karena kodenya panjang
+    href: `${base}#projects`, // Hasil: "/#projects" atau "/Portofolio/#projects"
   },
   {
     title: "Work",
-    href: "/#work", // Tetap halaman terpisah karena kodenya panjang
+    href: `${base}#work`, // Hasil: "/#work" atau "/Portofolio/#work"
   },
   {
     title: "Contact",
-    href: "/#footer", // FIX: Mengarah ke ID 'contact' di halaman beranda
+    href: `${base}#footer`, // Hasil: "/#footer" atau "/Portofolio/#footer"
   },
 ];
