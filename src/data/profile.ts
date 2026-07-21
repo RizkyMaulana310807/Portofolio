@@ -22,5 +22,6 @@ export const profile = {
     "Three.js",
     "Unity",
     "Godot",
+    "Python",
   ],
 };

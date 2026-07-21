@@ -4,12 +4,22 @@ export const techCategories = [
     items: ["JavaScript", "TypeScript", "React", "Astro", "Tailwind CSS"],
   },
   {
-    label: "Backend & Bahasa",
+    label: "Backend",
     items: ["Node.js", "TypeScript", "REST API", "PHP", "Laravel"],
   },
   {
+    label: "DevOps & Server",
+    items: [
+      "Server Deployment",
+      "Linux / VPS Management",
+      "Production Troubleshooting",
+      "Route & URL Configuration",
+      "Environment Setup",
+    ],
+  },
+  {
     label: "Tools & Platform",
-    items: ["Git", "GitHub", "Figma", "Vercel", "VS Code"],
+    items: ["Git", "GitHub", "Figma", "VS Code"],
   },
   {
     label: "AI & Automation",
@@ -17,8 +27,7 @@ export const techCategories = [
       "Prompt Engineering",
       "ChatGPT / Claude / Gemini",
       "GitHub Copilot",
-      "LM Studio",
-      "OpenAI API",
+      "LM Studio API",
     ],
   },
   {

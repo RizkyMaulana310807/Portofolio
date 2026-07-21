@@ -1,111 +1,99 @@
 export interface CaseStudy {
-  title: string;
-  problem: string;
-  solution: string;
-  techStack: string[];
-  category: string;
-  role: string;
-  year: string;
-  image?: string;
-  liveUrl?: string;
-  githubUrl?: string;
+    title: string;
+    problem: string;
+    solution: string;
+    techStack: string[];
+    category: string;
+    role: string;
+    year: string;
+    image?: string;
+    liveUrl?: string;
+    githubUrl?: string;
 }
 
 export const Projects: CaseStudy[] = [
-  {
-    title: "Optimasi Sinkronisasi State & Konflik Data pada Aplikasi Absensi Mobile",
-    problem: "Aplikasi sering mengalami race condition (tabrakan data) dan konflik state lokal ketika user melakukan check-in offline di area minim sinyal lalu mengirim data secara bersamaan.",
-    solution: "Menerapkan arsitektur offline-first dengan lokal antrean sekuensial (SQLite) dan algoritma rekonsiliasi timestamp untuk memastikan validitas data sebelum disinkronkan ke server pusat.",
-    techStack: ["Mobile App", "SQLite", "Git Control", "REST API Builder"],
-    category: "MOBILE APPLICATION",
-    role: "Full-Stack Dev",
-    year: "2026",
-    image: "/images/projects/attendance-app.png",
-    liveUrl: "https://demo.attendanceapp.com",
-    githubUrl: "https://github.com/yourusername/attendanceApp-mobile"
-  },
-  {
-    title: "Refactoring Arsitektur Database & State Session pada Monolith Project",
-    problem: "Bottleneck performa dan kebocoran session storage ketika relasi data project meningkat, mengakibatkan query N+1 yang memperlambat loading dashboard secara drastis.",
-    solution: "Melakukan optimasi skema database via indexing, migrasi session ke table terisolasi, dan mengimplementasikan Eager Loading untuk memangkas eksekusi query hingga 65%.",
-    techStack: ["PHP", "Laravel System", "Relational DB", "Query Optimizer"],
-    category: "WEB DEVELOPMENT",
-    role: "Backend Eng",
-    year: "2026",
-    image: "/images/projects/laravel-portfolio.png",
-    liveUrl: "https://portfolio.dev",
-    githubUrl: "https://github.com/yourusername/Portofolio-laravel"
-  },
-  {
-    title: "Sistem Otomasi Screen-Interaction Berbasis Vision-Language Model Lokal",
-    problem: "Skrip otomasi berbasis koordinat layar sering patah/gagal akibat perubahan dinamis pada tata letak (layout) UI aplikasi target di berbagai resolusi layar.",
-    solution: "Mengintegrasikan local AI model (VLM) via LM Studio sebagai mesin pendeteksi elemen visual secara real-time, memberikan koordinat dinamis yang akurat sebelum dieksekusi oleh py-script.",
-    techStack: ["Python Engine", "Local AI / Gemma", "PyAutoGUI", "Automation Tool"],
-    category: "ARTIFICIAL INTELLIGENCE",
-    role: "Automation Eng",
-    year: "2025",
-    image: "/images/projects/ai-automation.png",
-    liveUrl: "",
-    githubUrl: "https://github.com/yourusername/local-vlm-pyautogui"
-  },
-  {
-    title: "Perancangan Asynchronous Queue & Rate Limiter pada Webhook Gateway",
-    problem: "Server sering mengalami crash (HTTP 429 & Gateway Timeout) akibat lonjakan request webhooks dari platform pihak ketiga yang masuk secara bersamaan tanpa pembatasan.",
-    solution: "Membangun sistem antrean asinkronus berbasis Worker Redis dan mengimplementasikan Token Bucket Rate-Limiting untuk mendistribusikan beban eksekusi API secara merata.",
-    techStack: ["Redis Broker", "Queue Worker", "API Throttling", "Backend Security"],
-    category: "BACKEND ARCHITECTURE",
-    role: "Backend Eng",
-    year: "2025",
-    image: "/images/projects/webhook-gateway.png",
-    liveUrl: "",
-    githubUrl: "https://github.com/yourusername/redis-queue-limiter"
-  },
-  {
-    title: "Sistem Pipeline Data & Scraping Otomatis Berbasis Memory-Safe Worker",
-    problem: "Proses penambangan data dari ratusan target situs web sering terhenti di tengah jalan karena deteksi bot (IP Ban) dan konsumsi RAM server yang melonjak hingga memicu Out-Of-Memory.",
-    solution: "Mengembangkan script otomasi headless dengan rotasi proxy dinamis, sistem pembersihan RAM otomatis setelah siklus eksekusi, serta mekanisme auto-retry jika koneksi terputus.",
-    techStack: ["Python Engine", "Scrapy System", "Proxy Rotator", "Memory Optimizer"],
-    category: "DATA ENGINEERING",
-    role: "Data Engineer",
-    year: "2025",
-    image: "/images/projects/data-pipeline.png",
-    liveUrl: "",
-    githubUrl: "https://github.com/yourusername/memory-safe-scraper"
-  },
-  {
-    title: "Pembangunan Engine Layout Modular dengan Optimasi Sistem SEO Dinamis",
-    problem: "Proses perilisan halaman portofolio dan dokumentasi proyek memakan waktu lama karena tim harus menulis ulang struktur boilerplate HTML dan meta tags secara manual untuk tiap rute.",
-    solution: "Merancang arsitektur tata letak berbasis komponen server-side yang mengisolasi skrip global, mengotomatisasi generasi Open Graph tags, serta mengoptimalkan pemuatan aset kritis.",
-    techStack: ["Astro Framework", "Tailwind CSS", "SEO Architecture", "Component UI"],
-    category: "WEB DEVELOPMENT",
-    role: "Frontend Eng",
-    year: "2026",
-    image: "/images/projects/modular-engine.png",
-    liveUrl: "https://premium-portfolio-showcase.pages.dev",
-    githubUrl: "https://github.com/yourusername/astro-premium-portfolio"
-  },
-  {
-    title: "Client Engine & Pipeline Render untuk Lightweight Fantasy RPG",
-    problem: "Overhead grafis dan memori yang tinggi pada standar engine membuat proyek game bergenre MMORPG fantasi sulit berjalan stabil di atas 60fps, sering memicu overheating pada sistem pendingin laptop.",
-    solution: "Mengembangkan kustomisasi rendering pipeline 2.5D dan optimasi pemuatan aset secara asinkron (asynchronous asset loading) sehingga menekan konsumsi RAM dan meringankan beban kerja perangkat secara dramatis.",
-    techStack: ["C#", "Unity Engine", "Asset Bundles", "Game Loop"],
-    category: "GAME DEVELOPMENT",
-    role: "Game Client Dev",
-    year: "2026",
-    image: "/images/projects/fantasy-rpg.png",
-    liveUrl: "https://store.steampowered.com/app/...",
-    githubUrl: ""
-  },
-  {
-    title: "Sistem Manajemen & Sinkronisasi Save-State untuk Emulator Game",
-    problem: "Pemain sering kehilangan progres (save state) saat berpindah sesi bermain dari perangkat PC ke mobile karena tidak adanya standarisasi struktur sinkronisasi pada file memory card virtual.",
-    solution: "Membangun microservice backend untuk melakukan sinkronisasi save state lintas platform dengan algoritma kompresi data binary, memungkinkan proses unggah/unduh state ke cloud berjalan nyaris instan.",
-    techStack: ["Node.js", "Redis", "Binary Parser", "Cloud Sync"],
-    category: "GAME DEVELOPMENT",
-    role: "Backend Eng",
-    year: "2025",
-    image: "/images/projects/emulator-sync.png",
-    liveUrl: "",
-    githubUrl: "https://github.com/yourusername/emu-cloud-sync"
-  }
+    {
+        title: "Platform Pre-Order & Sistem Manajemen Pesanan Kuliner (Team Project)",
+        problem: "Usaha kuliner kelas membutuhkan sistem terpusat untuk menampilkan katalog produk yang siap beli (ready) dan sistem pre-order tanpa terjadi kesalahan pencatatan pesanan manual.",
+        solution: "Membuat platform web full-stack dengan katalog produk interaktif untuk pembeli dan Admin Panel khusus bagi pengelola untuk memantau pesanan masuk serta memperbarui status pengiriman secara real-time.",
+        techStack: ["Laravel", "PHP", "MySQL", "JavaScript", "Bootstrap / Tailwind"],
+        category: "FULL-STACK WEB",
+        role: "Full-Stack Dev",
+        year: "2025",
+        image: "/images/projects/food-preorder.png",
+        liveUrl: "",
+        githubUrl: "https://github.com/yourusername/food-preorder-app"
+    },
+    {
+        title: "Arsitektur Offline-First & Sinkronisasi State Aplikasi Absensi Mobile",
+        problem: "Aplikasi absensi sering mengalami kegagalan kirim data dan konflik state saat pegawai melakukan check-in di lokasi dengan koneksi internet yang tidak stabil.",
+        solution: "Merancang mekanisme offline-first berbasis penyimpanan lokal SQLite dan antrean sekuensial yang otomatis melakukan sinkronisasi data ke server pusat ketika koneksi kembali terhubung.",
+        techStack: ["Mobile Framework", "SQLite", "REST API", "Git"],
+        category: "MOBILE APPLICATION",
+        role: "Full-Stack Dev",
+        year: "2025",
+        image: "/images/projects/attendance-app.png",
+        liveUrl: "",
+        githubUrl: "https://github.com/yourusername/attendanceApp-mobile"
+    },
+    {
+        title: "RESTful API & Engine Manajemen Terpusat (Rental Barang & Perpustakaan)",
+        problem: "Kebutuhan pengelolaan inventaris barang sewa dan transaksi peminjaman buku perpustakaan yang memerlukan penanganan logika batas waktu, denda, dan validasi ketersediaan stok yang ketat.",
+        solution: "Membangun arsitektur backend RESTful API yang menangani pemrosesan transaksi relasional, skema database terisolasi, dan validasi data secara efisien di sisi server.",
+        techStack: ["Laravel", "PHP", "MySQL", "RESTful API", "Postman"],
+        category: "BACKEND ARCHITECTURE",
+        role: "Backend Eng",
+        year: "2025",
+        image: "/images/projects/rental-library-api.png",
+        liveUrl: "",
+        githubUrl: "https://github.com/yourusername/rental-library-api"
+    },
+    {
+        title: "Integrasi API Third-Party pada Pembaca Komik Web & Mobile",
+        problem: "Memuat dan menampilkan katalog komik dalam jumlah besar dapat menyebabkan konsumsi penyimpanan server membengkak jika data disimpan secara lokal.",
+        solution: "Mengintegrasikan API publik/online secara dinamis untuk menarik metadata dan gambar komik secara real-time, dikombinasikan dengan teknik caching sementara untuk menghemat pemakaian bandwidth.",
+        techStack: ["PHP / Laravel", "REST API Integration", "JSON Parser", "JavaScript"],
+        category: "WEB DEVELOPMENT",
+        role: "Full-Stack Dev",
+        year: "2024",
+        image: "/images/projects/comic-reader.png",
+        liveUrl: "",
+        githubUrl: "https://github.com/yourusername/comic-api-app"
+    },
+    {
+        title: "Engine Logika Game & Manajemen Save-State Persisten",
+        problem: "Membutuhkan struktur data dan algoritma yang stabil untuk memproses mekanika game real-time seperti perhitungan kalkulasi status karakter, sistem skor, dan penyimpanan progres permainan.",
+        solution: "Merancang logika internal game menggunakan pendekatan Object-Oriented Programming (OOP) untuk menangani kalkulasi Health Points (HP), damage, dan sistem save-state file yang persisten.",
+        techStack: ["Game Logic Engine", "Data Structures", "Algorithms", "OOP"],
+        category: "GAME DEVELOPMENT",
+        role: "Game Logic Dev",
+        year: "2025",
+        image: "/images/projects/game-logic.png",
+        liveUrl: "",
+        githubUrl: "https://github.com/yourusername/game-logic-portfolio"
+    },
+    {
+        title: "Sistem Otomasi Screen-Interaction Berbasis Vision-Language Model Lokal",
+        problem: "Skrip otomasi berbasis koordinat statis sering gagal ketika terdapat perubahan tata letak (layout) antarmuka aplikasi target atau perbedaan resolusi layar.",
+        solution: "Mengintegrasikan AI Model visual (VLM) via LM Studio dengan skrip Python untuk mendeteksi elemen UI secara dinamis sebelum mengeksekusi aksi klik atau input teks.",
+        techStack: ["Python", "Local AI / Gemma", "PyAutoGUI", "LM Studio"],
+        category: "ARTIFICIAL INTELLIGENCE",
+        role: "Automation Eng",
+        year: "2025",
+        image: "/images/projects/ai-automation.png",
+        liveUrl: "",
+        githubUrl: "https://github.com/yourusername/local-vlm-pyautogui"
+    },
+    {
+        title: "Refactoring Arsitektur Database & Optimasi Eager Loading (Laravel)",
+        problem: "Aplikasi monolith mengalami masalah *bottleneck* performa akibat query N+1 saat memuat relasi data yang kompleks pada dashboard admin.",
+        solution: "Melakukan indeksasi skema database, memindahkan manajemen session ke tabel terpisah, dan mengimplementasikan Eager Loading yang berhasil mempercepat loading halaman secara signifikan.",
+        techStack: ["PHP", "Laravel", "MySQL", "Query Optimization"],
+        category: "BACKEND ARCHITECTURE",
+        role: "Backend Eng",
+        year: "2026",
+        image: "/images/projects/laravel-portfolio.png",
+        liveUrl: "",
+        githubUrl: "https://github.com/yourusername/Portofolio-laravel"
+    }
 ];

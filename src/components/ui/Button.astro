@@ -3,19 +3,25 @@ interface Props {
   href?: string;
   variant?: "primary" | "secondary";
   class?: string;
+  target?: string;
+  rel?: string;
+  download?: boolean | string; // 1. Tambahkan ini
 }
 
 const {
   href,
   variant = "primary",
   class: className = "",
+  target,
+  rel,
+  download, // 2. Tangkap propertinya di sini
 } = Astro.props;
 
 const variants = {
   primary:
-    "bg-black text-white hover:bg-neutral-800",
+    "bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200 shadow-sm",
   secondary:
-    "border border-neutral-300 hover:bg-neutral-100 hover:text-neutral-950",
+    "border border-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 hover:text-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-white text-neutral-800 dark:text-neutral-200",
 };
 ---
 
@@ -23,13 +29,16 @@ const variants = {
   href ? (
     <a
       href={href}
-      class={`inline-flex items-center justify-center rounded-xl px-5 py-3 font-medium transition ${variants[variant]} ${className}`}
+      target={target}
+      rel={rel}
+      download={download}
+      class={`inline-flex items-center justify-center rounded-xl px-5 py-3 font-medium transition-all duration-200 ${variants[variant]} ${className}`}
     >
       <slot />
     </a>
   ) : (
     <button
-      class={`inline-flex items-center justify-center rounded-xl px-5 py-3 font-medium transition ${variants[variant]} ${className}`}
+      class={`inline-flex items-center justify-center rounded-xl px-5 py-3 font-medium transition-all duration-200 ${variants[variant]} ${className}`}
     >
       <slot />
     </button>

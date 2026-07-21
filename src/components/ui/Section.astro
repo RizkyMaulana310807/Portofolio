@@ -1,9 +1,10 @@
 ---
 interface Props {
   class?: string;
+  id?: string;
 }
 
-const { class: className = "" } = Astro.props;
+const { id, class: className = "" } = Astro.props;
 ---
 
 <section class={`py-14 ${className}`}>
