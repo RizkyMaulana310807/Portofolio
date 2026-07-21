@@ -1,0 +1,86 @@
+---
+import Container from "../ui/Container.astro";
+import Section from "../ui/Section.astro";
+import Button from "../ui/Button.astro";
+import Badge from "../ui/Badge.astro";
+import Image from "astro/components/Image.astro";
+import profileImage from '../../assets/images/profile.webp';
+import { profile } from "../../data/profile";
+---
+
+<Section class="flex items-center bg-white transition-colors duration-300 dark:bg-neutral-950">
+  <Container>
+    <div class="grid items-center gap-10 md:grid-cols-2 md:gap-12 lg:gap-16">
+
+      <!-- Left -->
+      <div class="text-center md:text-left">
+
+        <Badge class="mb-5 sm:mb-6">
+          👋 Available for Work
+        </Badge>
+
+        <h1
+          class="text-4xl font-extrabold leading-tight tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl xl:text-7xl dark:text-white"
+        >
+          Hi, I'm
+          <br />
+
+          <span class="text-blue-600 dark:text-blue-400">
+            {profile.name}
+          </span>
+        </h1>
+
+        <p
+          class="mt-4 text-lg font-medium text-neutral-800 sm:mt-6 sm:text-xl dark:text-neutral-200"
+        >
+          {profile.role}
+        </p>
+
+        <p
+          class="mx-auto mt-4 max-w-xl text-base leading-7 text-neutral-600 sm:mt-6 sm:text-lg sm:leading-8 md:mx-0 dark:text-neutral-400"
+        >
+          I build modern, scalable and high-performance web
+          applications with a strong focus on clean architecture,
+          maintainability and user experience.
+        </p>
+
+        <div class="mt-8 flex flex-wrap justify-center gap-4 sm:mt-10 md:justify-start">
+
+          <Button href="/contact">
+            Contact Me
+          </Button>
+
+          <Button
+            href="/projects"
+            variant="secondary"
+            class="hover"
+          >
+            View Projects
+          </Button>
+
+        </div>
+
+      </div>
+
+      <!-- Right -->
+      <div class="flex justify-center order-first md:order-none">
+
+            <div class="flex aspect-square w-56 items-center justify-center rounded-full bg-neutral-200 text-neutral-500 shadow-xl sm:w-64 md:w-72 lg:w-80 dark:bg-neutral-800 dark:text-neutral-400 dark:shadow-neutral-900/50 overflow-hidden">
+            
+                <!-- 3. Gunakan komponen Image dengan properti width dan height sesuai kebutuhan -->
+                <Image 
+                    src={profileImage} 
+                    alt="Foto Profil" 
+                    class="w-full h-full object-cover"
+                    width={320}
+                    height={320}
+                    loading="eager" 
+                    fetchpriority="high"
+                />
+
+            </div>
+      </div>
+
+    </div>
+  </Container>
+</Section>

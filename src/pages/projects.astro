@@ -1,0 +1,196 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Container from "../components/ui/Container.astro";
+import Section from "../components/ui/Section.astro";
+import Button from "../components/ui/Button.astro";
+import { Projects } from "@/data/projects";
+
+// Mengekstrak daftar kategori dan role yang unik secara otomatis dari data
+const uniqueCategories = ["ALL", ...new Set(Projects.map(p => p.category))];
+const uniqueRoles = ["ALL", ...new Set(Projects.map(p => p.role))];
+---
+
+<MainLayout 
+  title="Semua Project | Full-Stack & Game Dev Showcase" 
+  description="Daftar lengkap studi kasus, arsitektur sistem, dan proyek aplikasi yang telah saya bangun."
+>
+  <Section class="bg-white transition-colors duration-300 dark:bg-neutral-950 py-20 sm:py-32">
+    <Container>
+      
+      <!-- Header Halaman & Filter UI -->
+      <div class="max-w-4xl mb-20">
+        <span class="text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 block mb-3">
+          ARCHIVE / WORK SPECIFICATIONS
+        </span>
+        <h1 class="text-4xl font-black tracking-tight text-neutral-900 sm:text-5xl md:text-6xl dark:text-white">
+          All Projects
+        </h1>
+        <p class="mt-4 text-base sm:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed mb-10">
+          Eksplorasi mendalam dari seluruh sistem yang telah saya rancang, optimasi, dan rilis ke lingkungan produksi.
+        </p>
+
+        <!-- FITUR FILTER (DROPDOWN) -->
+        <div class="flex flex-col sm:flex-row gap-4 items-center bg-neutral-50 dark:bg-neutral-900/50 p-4 rounded-xl border border-neutral-200 dark:border-neutral-800">
+          <div class="w-full sm:w-auto flex items-center gap-3">
+            <label for="filter-category" class="text-sm font-semibold text-neutral-500 dark:text-neutral-400">Category:</label>
+            <select id="filter-category" class="bg-white dark:bg-neutral-950 border border-neutral-300 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full sm:w-48 p-2.5 outline-none transition-colors cursor-pointer">
+              {uniqueCategories.map(cat => (
+                <option value={cat}>{cat}</option>
+              ))}
+            </select>
+          </div>
+          <div class="w-full sm:w-auto flex items-center gap-3">
+            <label for="filter-role" class="text-sm font-semibold text-neutral-500 dark:text-neutral-400">Role:</label>
+            <select id="filter-role" class="bg-white dark:bg-neutral-950 border border-neutral-300 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full sm:w-48 p-2.5 outline-none transition-colors cursor-pointer">
+              {uniqueRoles.map(role => (
+                <option value={role}>{role}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- List Baris Proyek Premium -->
+      <!-- Menambahkan ID pembungkus untuk mempermudah targeting JS -->
+      <div id="projects-container" class="flex flex-col gap-24 sm:gap-32">
+        {
+          Projects.map((project, index) => {
+            const isEven = index % 2 === 0;
+            
+            return (
+              // Menambahkan Data Attributes untuk Filter (data-category & data-role)
+              <div 
+                class="project-row grid grid-cols-1 lg:grid-cols-12 gap-12 items-center transition-opacity duration-500"
+                data-category={project.category}
+                data-role={project.role}
+              >
+                
+                <!-- Kolom Mockup Gambar (Dengan ID Khusus untuk Re-ordering) -->
+                <div class={`image-col lg:col-span-7 w-full ${isEven ? 'lg:order-first' : 'lg:order-last'}`}>
+                  <div class="relative bg-neutral-900 dark:bg-neutral-950 rounded-2xl p-4 sm:p-6 shadow-xl border border-neutral-200/60 dark:border-neutral-800 group overflow-hidden">
+                    <div class="aspect-video w-full rounded-lg overflow-hidden bg-neutral-800 flex items-center justify-center">
+                      {project.image ? (
+                        <img 
+                          src={project.image} 
+                          alt={project.title} 
+                          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      ) : (
+                        <span class="text-neutral-500 text-sm font-mono">💻 Mockup_{project.title.replace(/\s+/g, '_')}.png</span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Kolom Informasi Detail -->
+                <div class="lg:col-span-5 flex flex-col justify-center">
+                  <span class="text-xs font-mono tracking-wider text-neutral-400 dark:text-neutral-500 block mb-2">
+                    {project.category || "BACKEND / FULL-STACK"}
+                  </span>
+                  
+                  <h2 class="text-3xl font-black tracking-tight text-neutral-900 dark:text-white mb-4 capitalize">
+                    {project.title.toLowerCase()}
+                  </h2>
+                  
+                  <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6">
+                    {project.solution}
+                  </p>
+
+                  <div class="grid grid-cols-3 gap-4 py-5 border-t border-b border-neutral-200 dark:border-neutral-800 mb-8 text-sm">
+                    <div>
+                      <span class="text-xs font-bold text-neutral-400 dark:text-neutral-500 block uppercase mb-1">Role</span>
+                      <span class="font-medium text-neutral-800 dark:text-neutral-200">{project.role || "Full-stack"}</span>
+                    </div>
+                    <div>
+                      <span class="text-xs font-bold text-neutral-400 dark:text-neutral-500 block uppercase mb-1">Toolkit</span>
+                      <span class="font-medium text-neutral-800 dark:text-neutral-200 block truncate">{project.techStack.slice(0, 2).join(" · ")}</span>
+                    </div>
+                    <div>
+                      <span class="text-xs font-bold text-neutral-400 dark:text-neutral-500 block uppercase mb-1">Year</span>
+                      <span class="font-medium text-neutral-800 dark:text-neutral-200">{project.year || "2026"}</span>
+                    </div>
+                  </div>
+
+                  <div class="flex gap-4">
+                    <Button href={project.liveUrl || "#"} class="rounded-full px-6 py-2">
+                      Visit Site ↗
+                    </Button>
+                    {project.githubUrl && (
+                      <Button href={project.githubUrl} variant="secondary" class="rounded-full px-6 py-2">
+                        Source Code
+                      </Button>
+                    )}
+                  </div>
+                </div>
+
+              </div>
+            );
+          })
+        }
+        
+        <!-- Pesan Kosong Jika Filter Tidak Cocok -->
+        <div id="no-results-msg" class="hidden text-center py-20">
+           <p class="text-neutral-500 dark:text-neutral-400 text-lg">Tidak ada proyek yang sesuai dengan kriteria filter Anda.</p>
+        </div>
+      </div>
+
+    </Container>
+  </Section>
+</MainLayout>
+
+<!-- SCRIPT LOGIKA FILTER & AUTO-REORDER L/R -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const categorySelect = document.getElementById("filter-category") as HTMLSelectElement;
+    const roleSelect = document.getElementById("filter-role") as HTMLSelectElement;
+    const projectRows = document.querySelectorAll(".project-row");
+    const noResultsMsg = document.getElementById("no-results-msg");
+
+    function applyFilters() {
+      const selectedCategory = categorySelect.value;
+      const selectedRole = roleSelect.value;
+      let visibleCount = 0;
+
+      projectRows.forEach((row) => {
+        const rowCategory = row.getAttribute("data-category");
+        const rowRole = row.getAttribute("data-role");
+
+        // Cek kecocokan filter
+        const matchCategory = selectedCategory === "ALL" || rowCategory === selectedCategory;
+        const matchRole = selectedRole === "ALL" || rowRole === selectedRole;
+
+        if (matchCategory && matchRole) {
+          // Tampilkan row
+          (row as HTMLElement).style.display = "grid";
+          
+          // Logika Re-order agar Kiri-Kanan tetap konsisten meski di-filter
+          const imageCol = row.querySelector(".image-col");
+          if (imageCol) {
+            if (visibleCount % 2 === 0) {
+              imageCol.classList.remove("lg:order-last");
+              imageCol.classList.add("lg:order-first");
+            } else {
+              imageCol.classList.remove("lg:order-first");
+              imageCol.classList.add("lg:order-last");
+            }
+          }
+          visibleCount++;
+        } else {
+          // Sembunyikan row
+          (row as HTMLElement).style.display = "none";
+        }
+      });
+
+      // Tampilkan notif jika tidak ada hasil
+      if (visibleCount === 0 && noResultsMsg) {
+        noResultsMsg.classList.remove("hidden");
+      } else if (noResultsMsg) {
+        noResultsMsg.classList.add("hidden");
+      }
+    }
+
+    // Pasang Event Listener pada dropdown
+    categorySelect.addEventListener("change", applyFilters);
+    roleSelect.addEventListener("change", applyFilters);
+  });
+</script>

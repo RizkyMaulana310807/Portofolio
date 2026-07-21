@@ -1,17 +1,27 @@
 ---
-
+import MainLayout from "../layouts/MainLayout.astro";
+import Container from "../components/ui/Container.astro";
+import Section from "../components/ui/Section.astro";
+import Hero from "@/components/sections/Hero.astro";
+import About from "@/components/sections/About.astro";
+import TechStack from "@/components/sections/TechStack.astro";
+import FeaturedProject from "@/components/sections/FeaturedProject.astro";
+import Experience from "@/components/sections/Experience.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MainLayout
+  title="Home"
+  description="Portfolio"
+>
+  <Section>
+    <Container>
+
+        <Hero/>
+        <About/>
+        <TechStack/>
+        <FeaturedProject/>
+        <Experience/>
+        
+    </Container>
+  </Section>
+</MainLayout>

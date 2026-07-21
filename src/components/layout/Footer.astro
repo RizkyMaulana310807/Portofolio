@@ -1,0 +1,65 @@
+---
+import Container from "../ui/Container.astro";
+import Section from "../ui/Section.astro";
+import Button from "../ui/Button.astro";
+import Badge from "../ui/Badge.astro";
+
+import { profile } from "../../data/profile";
+
+// Ambil tahun saat ini secara dinamis agar footer tidak pernah usang
+const currentYear = new Date().getFullYear();
+---
+
+<Section class="bg-white transition-colors duration-300 dark:bg-neutral-950 py-20 sm:py-28 border-t border-neutral-100 dark:border-neutral-800/40">
+  <Container id="footer">
+    
+    <!-- Contact Card Call-to-Action -->
+    <div class="max-w-4xl mx-auto bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-3xl p-8 sm:p-12 text-center shadow-sm">
+      <Badge class="mb-4">
+        📫 Get In Touch
+      </Badge>
+      
+      <h2 class="text-3xl font-extrabold tracking-tight text-neutral-900 sm:text-4xl dark:text-white">
+        Let's Build Something <span class="text-blue-600 dark:text-blue-400">Great Together</span>
+      </h2>
+      
+      <p class="mt-4 mx-auto max-w-xl text-base leading-relaxed text-neutral-600 dark:text-neutral-400">
+        Saya selalu terbuka untuk diskusi mengenai arsitektur backend, otomasi sistem, integrasi AI lokal, atau peluang kerja full-stack.
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <!-- Gunakan email kamu dari profile data -->
+        <Button href={`mailto:${profile.email || 'emailmu@domain.com'}`}>
+          ✉️ Send an Email
+        </Button>
+        
+        <!-- Tombol download CV lokal yang ditaruh di folder public/ -->
+        <Button href="/cv-kamu.pdf" variant="secondary" class="hover">
+          📄 Download Resume / CV
+        </Button>
+      </div>
+
+      <!-- Social Links Row -->
+      <div class="mt-10 flex justify-center gap-6 border-t border-neutral-200 dark:border-neutral-800 pt-8">
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+          🔗 GitHub
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+          🔗 LinkedIn
+        </a>
+        <a href="https://t.me" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+          🔗 Telegram
+        </a>
+      </div>
+    </div>
+
+    <!-- Tiny Copyright Footer -->
+    <div class="mt-16 text-center">
+      <p class="text-xs text-neutral-400 dark:text-neutral-600">
+        &copy; {currentYear} {profile.name || 'Your Name'}. Built with Astro & Tailwind CSS. All rights reserved.
+      </p>
+    </div>
+
+  </Container>
+</Section>

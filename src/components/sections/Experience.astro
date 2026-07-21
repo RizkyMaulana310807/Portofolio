@@ -1,0 +1,122 @@
+---
+import Container from "../ui/Container.astro";
+import Section from "../ui/Section.astro";
+import Badge from "../ui/Badge.astro";
+import { Experiences } from "@/data/experience";
+---
+
+<Section class="bg-white transition-colors duration-300 dark:bg-neutral-950 py-20 sm:py-28 border-t border-neutral-100 dark:border-neutral-800/50">
+  <Container id="work">
+    
+    <!-- Section Header -->
+    <div class="max-w-3xl mx-auto text-center mb-16 sm:mb-24">
+      <Badge class="mb-4 sm:mb-5">
+        💼 Journey & Background
+      </Badge>
+      <h2 class="text-3xl font-extrabold tracking-tight text-neutral-900 sm:text-4xl lg:text-5xl dark:text-white">
+        Work <span class="text-blue-600 dark:text-blue-400">Experience</span>
+      </h2>
+      <p class="mt-4 text-base leading-relaxed text-neutral-600 sm:text-lg dark:text-neutral-400">
+        Rekam jejak profesional dalam membangun solusi digital, optimasi performa backend, hingga rekayasa otomasi sistem.
+      </p>
+    </div>
+
+    <!-- Timeline Container -->
+    <div class="max-w-4xl mx-auto relative before:absolute before:top-0 before:bottom-0 before:left-4 sm:before:left-1/2 before:w-0.5 before:bg-neutral-200 before:dark:bg-neutral-800">
+      
+      {
+        Experiences.map((exp, index) => {
+          const isEven = index % 2 === 0;
+          const isHiddenByDefault = index >= 2;          
+
+          return (
+            /* FIX: Menyisipkan class dinamis hidden-exp di bawah ini agar data lama tersembunyi */
+            <div class={`relative mb-16 sm:mb-24 last:mb-0 group ${isHiddenByDefault ? 'hidden-exp hidden' : ''}`}>
+              
+              <!-- Timeline Dot (Titik Tengah) -->
+              <div class="absolute top-1.5 left-4 sm:left-1/2 w-4 h-4 rounded-full bg-white dark:bg-neutral-950 border-4 border-blue-600 dark:border-blue-400 -translate-x-1/2 z-10 transition-transform duration-300 group-hover:scale-125" />
+
+              <!-- Content Card Container -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full pl-12 sm:pl-0">
+                
+                <!-- Kolom Kiri: Info Waktu -->
+                <div class={`flex flex-col ${isEven ? 'sm:text-right sm:items-end' : 'sm:order-last sm:text-left sm:items-start'} justify-start pt-0.5`}>
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-600 dark:bg-blue-950/40 dark:text-blue-400 mb-2">
+                    {exp.period}
+                  </span>
+                  <span class="text-sm font-medium text-neutral-400 dark:text-neutral-500">
+                    {exp.location}
+                  </span>
+                </div>
+
+                <!-- Kolom Kanan/Kiri: Detail Pekerjaan -->
+                <div class={`bg-neutral-50 dark:bg-neutral-900/40 border border-neutral-200/60 dark:border-neutral-800/60 rounded-2xl p-6 sm:p-8 transition-all duration-300 hover:shadow-md hover:border-neutral-300 dark:hover:border-neutral-700 ${isEven ? '' : 'sm:text-left'}`}>
+                  <h3 class="text-xl font-bold tracking-tight text-neutral-900 dark:text-white">
+                    {exp.role}
+                  </h3>
+                  <h4 class="text-sm font-semibold text-blue-600 dark:text-blue-400 mt-1 mb-4">
+                    {exp.company}
+                  </h4>
+                  
+                  <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed mb-5">
+                    {exp.description}
+                  </p>
+
+                  <!-- List Kontribusi/Pencapaian -->
+                  <ul class="space-y-2.5 mb-6 text-sm text-neutral-700 dark:text-neutral-300">
+                    {exp.achievements.map((ach) => (
+                      <li class="flex items-start gap-2">
+                        <span class="text-blue-500 dark:text-blue-400 mt-1 select-none">•</span>
+                        <span class="leading-relaxed">{ach}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <!-- Tech Stack Mini Footer -->
+                  <div class="flex flex-wrap gap-1.5 pt-4 border-t border-neutral-200/60 dark:border-neutral-800/60">
+                    {exp.techStack.map((tech) => (
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono font-medium bg-white text-neutral-600 border border-neutral-200 dark:bg-neutral-950 dark:text-neutral-400 dark:border-neutral-800">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          );
+        })
+      }
+
+    </div>
+
+    <!-- Tombol diletakkan di luar div timeline agar tidak merusak posisi absolut garis vertikal -->
+    <div class="text-center mt-12">
+      <button id="toggle-exp-btn" class="px-6 py-2.5 text-sm font-semibold text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-800/60 rounded-full hover:bg-blue-50 dark:hover:bg-blue-950/30 transition-all cursor-pointer inline-flex items-center gap-2">
+        Tampilkan Semua Pengalaman v
+      </button>
+    </div>
+
+  </Container>
+</Section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggleBtn = document.getElementById("toggle-exp-btn");
+    const hiddenRows = document.querySelectorAll(".hidden-exp");
+    let isOpen = false;
+
+    if (toggleBtn) {
+      toggleBtn.addEventListener("click", () => {
+        isOpen = !isOpen;
+        hiddenRows.forEach(row => {
+          row.classList.toggle("hidden");
+        });
+        
+        toggleBtn.textContent = isOpen 
+          ? "Sembunyikan Pengalaman ^" 
+          : "Tampilkan Semua Pengalaman v";
+      });
+    }
+  });
+</script>

@@ -1,0 +1,60 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Section from "@/components/ui/Section.astro";
+import Container from "@/components/ui/Container.astro";
+import Button from "@/components/ui/Button.astro";
+---
+
+<MainLayout 
+  title="Halaman Tidak Ditemukan - 404" 
+  description="Maaf, halaman yang Anda cari tidak dapat ditemukan atau telah dipindahkan."
+>
+  <!-- Perubahan: Menggunakan min-h-[calc(100vh-16rem)] agar tingginya otomatis menghitung sisa layar kosong -->
+  <Section class="flex flex-col items-center justify-center min-h-[calc(100vh-20rem)] py-12 sm:py-24 bg-white transition-colors duration-300 dark:bg-neutral-950">
+    <Container class="flex flex-col items-center justify-center">
+      
+      <!-- max-w kita naikkan sedikit ke md agar proporsi di desktop lebih luas dan seimbang -->
+      <div class="max-w-md md:max-w-lg mx-auto text-center flex flex-col items-center justify-center">
+        
+        <!-- Angka 404 dibuat lebih tegas dan besar di desktop (md:text-[10rem]) -->
+        <h1 class="text-7xl sm:text-8xl md:text-[10rem] font-black tracking-tighter text-blue-600 dark:text-blue-400 select-none leading-none mb-2">
+          404
+        </h1>
+
+        <!-- Pesan Utama -->
+        <h2 class="mt-4 text-2xl font-bold tracking-tight text-neutral-900 sm:text-3xl md:text-4xl dark:text-white px-4">
+          Waduh, Halamannya Hilang!
+        </h2>
+        
+        <!-- Deskripsi Ramah -->
+        <p class="mt-4 text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-md px-4">
+          Tautan yang Anda ikuti mungkin rusak, sudah kedaluwarsa, atau ada salah ketik pada alamat URL-nya. Mari kita kembali ke jalur yang benar.
+        </p>
+
+        <!-- Container Button Responsif -->
+        <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 w-full px-6 sm:px-0">
+          
+          <!-- Tombol 1 -->
+          <div class="w-full sm:w-auto flex justify-center">
+            <Button href="/">
+              <span class="px-6 py-1 whitespace-nowrap inline-block">
+                🏠 Kembali ke Beranda
+              </span>
+            </Button>
+          </div>
+          
+          <!-- Tombol 2 -->
+          <div class="w-full sm:w-auto flex justify-center">
+            <Button href="javascript:history.back()" variant="secondary">
+              <span class="px-6 py-1 whitespace-nowrap inline-block">
+                ⬅️ Halaman Sebelumnya
+              </span>
+            </Button>
+          </div>
+
+        </div>
+
+      </div>
+    </Container>
+  </Section>
+</MainLayout>
