@@ -8,23 +8,25 @@ import profileImage from "../assets/images/profile.webp";
 import { profile } from "../data/profile";
 import { socials } from "../data/socials";
 
+const base = import.meta.env.BASE_URL;
+
 const primaryLinks = [
   {
     name: "Website Portofolio",
-    url: "/",
+    url: base, // Mengarah ke base path (misal: /Portofolio/)
     icon: "mdi:web",
     isHighlight: true,
   },
   {
     name: "Download CV (Indonesia)",
-    url: "/pdfs/FULLSTACK_DEVELOPER_RIZKY_MAULANA_ID.pdf", // Pastikan ada _ID.pdf
+    url: `${base}pdfs/FULLSTACK_DEVELOPER_RIZKY_MAULANA_ID.pdf`,
     icon: "mdi:file-document-outline",
     isHighlight: false,
     download: "CV_Rizky_Maulana_ID.pdf",
   },
   {
     name: "Download CV (English)",
-    url: "/pdfs/FULLSTACK_DEVELOPER_RIZKY_MAULANA_EN.pdf", // Ubah jadi _EN.pdf (1 garis bawah)
+    url: `${base}pdfs/FULLSTACK_DEVELOPER_RIZKY_MAULANA_EN.pdf`,
     icon: "mdi:file-document-outline",
     isHighlight: false,
     download: "CV_Rizky_Maulana_EN.pdf",
