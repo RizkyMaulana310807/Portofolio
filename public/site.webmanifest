@@ -1,13 +1,13 @@
 {
   "name": "Portfolio Backend Developer",
   "short_name": "Portfolio",
-  "start_url": "/",
+  "start_url": "/Portofolio/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#2563eb",
   "icons": [
     {
-      "src": "/favicon.svg",
+      "src": "/Portofolio/favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml"
     }
